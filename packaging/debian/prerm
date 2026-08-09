@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Remove immutable flag so dpkg can delete the installed files.
+# This runs BEFORE the package files are removed.
+if command -v chattr >/dev/null 2>&1; then
+    find /opt/ranzer/ -type f -exec chattr -i {} \; 2>/dev/null || true
+fi

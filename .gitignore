@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+logs/
+ranzer.log
+ranzer_events.log
+ranzer_export.*
+.ranzer_honey_state.json
+dist/
+build/
+*.deb
+venv/
+.venv/

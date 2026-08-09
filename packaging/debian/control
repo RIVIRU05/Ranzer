@@ -1,0 +1,21 @@
+Package: ranzer
+Version: 1.0-1
+Section: utils
+Priority: optional
+Architecture: amd64
+Installed-Size: 0
+Depends: libc6 (>= 2.17), libx11-6, libnotify-bin
+Maintainer: RANZER Team <rivirusandamuthu@gmail.com>
+Homepage: https://github.com/riviru/ranzer
+Description: RANZER - Ransomware Detection Endpoint Protection System
+ RANZER monitors directories for ransomware activity using multiple
+ detection methods running in parallel:
+  - Shannon entropy analysis to detect files being encrypted
+  - Honey file deployment to catch any unauthorised access
+  - Process behaviour tracking via kernel I/O monitoring
+  - Real-time threat correlation with automatic scoring
+  - Auto-terminate suspected ransomware processes (optional)
+ .
+ Includes a graphical interface and a full command-line tool.
+ Ranzer files are protected with the immutable flag (chattr +i)
+ so ransomware cannot modify or delete the tool itself.

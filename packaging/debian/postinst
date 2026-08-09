@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+# ── Permissions ───────────────────────────────────────────────────────────────
+chmod 755 /opt/ranzer/ranzer
+chmod -R 755 /opt/ranzer/
+chown -R root:root /opt/ranzer/
+
+# ── Ransomware self-protection: immutable flag ────────────────────────────────
+# chattr +i makes every file truly immutable at the filesystem level.
+# Even root cannot modify or delete them without first removing the flag.
+# User-space ransomware (running as the logged-in user) cannot do this -
+# it would need a root shell and explicit knowledge of the flag.
+if command -v chattr >/dev/null 2>&1; then
+    find /opt/ranzer/ -type f -exec chattr +i {} \; 2>/dev/null || true
+    echo "  [RANZER] Immutable protection applied to /opt/ranzer/"
+fi
+
+# ── Desktop integration ───────────────────────────────────────────────────────
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications/ 2>/dev/null || true
+fi
+
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor/ 2>/dev/null || true
+fi
+
+echo ""
+echo "  ╔══════════════════════════════════════════════════╗"
+echo "  ║  RANZER installed successfully!                  ║"
+echo "  ║  Launch: application menu  OR  run: ranzer gui  ║"
+echo "  ╚══════════════════════════════════════════════════╝"
+echo ""

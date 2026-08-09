@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=RANZER
+GenericName=Ransomware Detection
+Comment=Endpoint protection - detects ransomware via entropy, honey files and process tracking
+Exec=/opt/ranzer/ranzer gui
+Icon=ranzer
+Terminal=false
+Type=Application
+Categories=System;Security;
+Keywords=ransomware;security;protection;endpoint;malware;
+StartupNotify=true
+StartupWMClass=ranzer
